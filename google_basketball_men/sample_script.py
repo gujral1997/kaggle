@@ -1,15 +1,9 @@
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
-# For example, here's several helpful packages to load in
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import numpy as np
+import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 from sklearn.model_selection import GridSearchCV
-
-# Input data files are available in the "../input/" directory.
-# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
 
 from subprocess import check_output
 print(check_output(["ls", "./DataFiles"]).decode("utf8"))
@@ -21,12 +15,11 @@ df_seeds.head()
 
 
 def seed_to_int(seed):
-    #Get just the digits from the seeding. Return as int
     s_int = int(seed[1:3])
     return s_int
 
 df_seeds['seed_int'] = df_seeds.Seed.apply(seed_to_int)
-df_seeds.drop(labels=['Seed'], inplace=True, axis=1) # This is the string label
+df_seeds.drop(labels=['Seed'], inplace=True, axis=1)
 
 df_seeds.head()
 
